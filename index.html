@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vedansh Thakkar | AI Engineer & Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F8F5F0;
+      --ink: #1A1814;
+      --ink-light: #4A4640;
+      --ink-faint: #8A857E;
+      --accent: #1B4F72;
+      --accent-warm: #C0392B;
+      --accent-light: #EAF0F6;
+      --rule: #D8D2C8;
+      --card-bg: #FFFFFF;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(248, 245, 240, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.4rem 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); color: #fff; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 60px;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 6rem;
+    }
+    .hero-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 32px; height: 1px;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-links {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 1.75rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #154360; }
+    .btn-secondary {
+      border: 1px solid var(--rule);
+      color: var(--ink-light);
+      padding: 0.75rem 1.75rem;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-visual {
+      background: var(--accent);
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5);
+      gap: 1rem;
+    }
+    .hero-photo-placeholder svg { opacity: 0.3; }
+    .hero-photo-placeholder p {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .hero-stats {
+      position: absolute;
+      bottom: 2.5rem; left: 2.5rem;
+      display: flex; gap: 2rem;
+    }
+    .stat { color: #fff; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 6rem; }
+    section:nth-child(even) { background: var(--card-bg); }
+
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1rem;
+    }
+    .section-num {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.85;
+    }
+    .about-text p strong { color: var(--ink); font-weight: 500; }
+    .interest-tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-light);
+      background: var(--cream);
+    }
+    .tag.accent { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .education-card {
+      border-left: 2px solid var(--accent);
+      padding: 1.5rem 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--cream);
+    }
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .edu-school { color: var(--accent); font-weight: 500; font-size: 0.9rem; }
+    .edu-detail { color: var(--ink-faint); font-size: 0.82rem; margin-top: 0.25rem; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .skill-group { padding: 1.5rem; border: 1px solid var(--rule); background: var(--cream); }
+    .skill-group-title {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-pill {
+      font-size: 0.76rem;
+      padding: 0.2rem 0.6rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 2.5rem; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-meta { padding-top: 0.2rem; }
+    .exp-date { font-size: 0.78rem; color: var(--ink-faint); letter-spacing: 0.04em; }
+    .exp-loc { font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.25rem; }
+    .exp-role {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      margin-bottom: 0.2rem;
+    }
+    .exp-company { color: var(--accent); font-weight: 500; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .exp-bullets { padding-left: 1rem; }
+    .exp-bullets li {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-card {
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      background: var(--cream);
+      margin-bottom: 1.5rem;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .pub-card:hover { border-color: var(--accent); }
+    .pub-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .pub-authors { font-size: 0.82rem; color: var(--ink-faint); margin-bottom: 0.4rem; }
+    .pub-authors strong { color: var(--ink); }
+    .pub-venue { font-size: 0.82rem; color: var(--accent); font-style: italic; }
+    .pub-doi { font-size: 0.75rem; margin-top: 0.75rem; }
+    .pub-doi a { color: var(--accent); text-decoration: none; }
+    .pub-doi a:hover { text-decoration: underline; }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .project-card {
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      background: var(--card-bg);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .project-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(27,79,114,0.06); }
+    .project-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 0.75rem;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+    .project-desc { font-size: 0.88rem; color: var(--ink-light); line-height: 1.7; }
+    .project-metrics {
+      display: flex; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap;
+    }
+    .metric {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.2rem 0.6rem;
+    }
+
+    /* ── STORIES / BLOG ── */
+    .stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .story-card {
+      cursor: pointer;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      transition: box-shadow 0.2s;
+    }
+    .story-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+    .story-img {
+      aspect-ratio: 4/3;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-img.alt { background: #2C3E50; }
+    .story-img.alt2 { background: #1A5276; }
+    .story-photo-label {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      gap: 0.5rem;
+    }
+    .story-photo-label svg { opacity: 0.4; }
+    .story-photo-label span { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .story-body { padding: 1.25rem; background: var(--card-bg); }
+    .story-location {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .story-headline { font-family: var(--serif); font-size: 1rem; line-height: 1.4; margin-bottom: 0.5rem; }
+    .story-excerpt { font-size: 0.82rem; color: var(--ink-faint); line-height: 1.6; }
+
+    /* ── TEACHING ── */
+    .teaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .teaching-card {
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      background: var(--cream);
+    }
+    .course-code {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 0.5rem;
+    }
+    .course-title { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .course-inst { font-size: 0.85rem; color: var(--ink-faint); }
+    .course-desc { font-size: 0.88rem; color: var(--ink-light); margin-top: 0.75rem; line-height: 1.65; }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--ink);
+      color: var(--cream);
+    }
+    #contact .section-num { color: #7FB3D3; }
+    #contact h2 { color: #fff; }
+    #contact .section-header { border-bottom-color: rgba(255,255,255,0.12); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-intro { font-size: 1.05rem; color: rgba(248,245,240,0.7); line-height: 1.85; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; }
+    .contact-icon {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { opacity: 0.7; }
+    .contact-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,245,240,0.4); margin-bottom: 0.2rem; }
+    .contact-val { color: #fff; font-size: 0.92rem; }
+    .contact-val a { color: #7FB3D3; text-decoration: none; }
+    .contact-val a:hover { text-decoration: underline; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(248,245,240,0.5); }
+    .form-input, .form-textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: rgba(127,179,211,0.5); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .btn-send {
+      background: #fff;
+      color: var(--ink);
+      border: none;
+      padding: 0.85rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+    .btn-send:hover { background: #7FB3D3; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 2rem 6rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      color: rgba(248,245,240,0.5);
+      font-size: 0.9rem;
+    }
+    .footer-note { font-size: 0.75rem; color: rgba(248,245,240,0.3); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-tag { animation: fadeUp 0.6s ease both; }
+    h1         { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-bio  { animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-links{ animation: fadeUp 0.6s 0.3s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero-text { padding: 4rem 2rem; }
+      section { padding: 4rem 2rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .stories-grid { grid-template-columns: 1fr 1fr; }
+      .teaching-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      footer { padding: 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .stories-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+	/* ── RESEARCH ── */
+	.research-grid {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	  gap: 1.5rem;
+	}
+
+	.research-card {
+	  background: var(--card-bg);
+	  border: 1px solid var(--rule);
+	  cursor: pointer;
+	  overflow: hidden;
+	  transition: transform 0.2s, box-shadow 0.2s;
+	}
+
+	.research-card:hover {
+	  transform: translateY(-4px);
+	  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+	}
+
+	.research-card img {
+	  width: 100%;
+	  height: 220px;
+	  object-fit: cover;
+	}
+
+	.research-body {
+	  padding: 1rem;
+	}
+
+	.research-title {
+	  font-family: var(--serif);
+	  font-size: 1rem;
+	  margin-bottom: 0.3rem;
+	}
+
+	.research-tagline {
+	  font-size: 0.8rem;
+	  color: var(--ink-faint);
+	}
+	.lightbox {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background: rgba(0,0,0,0.85);
+	  display: none;
+	  align-items: center;
+	  justify-content: center;
+	  z-index: 999;
+	}
+
+	.lightbox img {
+	  max-width: 90%;
+	  max-height: 90%;
+	  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+	}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Vedansh Thakkar</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+	<li><a href="#research">Research Portfolio</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="Vedansh_Thakkar_Resume.pdf" target="_blank">
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-tag">AI Engineer &amp; Researcher</div>
+    <h1>Vedansh<br><em>Thakkar,</em> MS</h1>
+    <p class="hero-bio">
+      I build and deploy AI systems that <strong> improve and save lives</strong>: from clinical NLP pipelines
+      that extract meaning from millions of patient notes, to multimodal deep learning models
+      deployed across U.S. hospital systems. Six years at the intersection of research and production.
+    </p>
+    <div class="hero-links">
+      <a href="#publications" class="btn-primary">View Research</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-visual" style="position:relative; overflow:hidden;">
+    <img src="profile.jpg" alt="Vedansh Thakkar at Vanderbilt Engineering"
+         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top;" />
+    <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(27,79,114,0.92) 0%, rgba(27,79,114,0.2) 45%, transparent 100%);"></div>
+    <div class="hero-stats" style="position:absolute; bottom:2.5rem; right:2.5rem; z-index:2;">
+      <div class="stat">
+        <span class="stat-num">6+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Organizations</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">PLOS ONE Paper</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>About Me</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I am an <strong>AI Engineer and Researcher</strong> with over six years of experience training and deploying
+        machine learning systems for real-world healthcare and industrial robotics applications.
+        My work lives at the edge where research meets production — where a model's accuracy is measured
+        not just in benchmarks, but in clinical outcomes and lives affected.
+      </p>
+      <p>
+        At the <strong>University of Minnesota's Department of Surgery</strong>, I led the development of clinical NLP
+        systems that automatically extracted symptom information from tens of thousands of patient notes,
+        contributing to peer-reviewed publications and clinical decision-support tools. At
+        <strong>Neocortex Robotics</strong>, I architected multimodal RAG systems and computer vision
+        pipelines deployed at fulfillment centers across the U.S.
+      </p>
+      <p>
+        I hold a <strong>Master of Science in Electrical Engineering &amp; Computer Science</strong> from
+        Vanderbilt University (GPA: 3.93/4.00), where I also taught Image Processing and Database
+        Management Systems. My research interests span healthcare AI, large language models,
+        and responsible deployment of AI in regulated environments.
+      </p>
+      <div class="interest-tags">
+        <span class="tag accent">Clinical NLP</span>
+        <span class="tag accent">LLMs &amp; RAG</span>
+        <span class="tag accent">Medical Imaging AI</span>
+        <span class="tag accent">Agentic AI</span>
+        <span class="tag accent">Computer Vision</span>
+        <span class="tag accent">Healthcare AI</span>
+        <span class="tag accent">Explainable AI</span>
+        <span class="tag accent">MLOps</span>
+        <span class="tag accent">Multimodal Learning</span>
+        <span class="tag accent">Fairness in AI</span>
+      </div>
+    </div>
+    <div>
+      <div class="education-card">
+        <div class="edu-degree">Master of Science</div>
+        <div class="edu-school">Vanderbilt University</div>
+        <div class="edu-detail">Electrical Engineering &amp; Computer Science · Nashville, TN</div>
+        <div class="edu-detail">Dec 2019 · GPA: 3.93 / 4.00</div>
+      </div>
+      <div class="education-card">
+        <div class="edu-degree">Bachelor of Science</div>
+        <div class="edu-school">Rajiv Gandhi Technological University</div>
+        <div class="edu-detail">Electronics &amp; Electrical Engineering · MP, India</div>
+        <div class="edu-detail">May 2017</div>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <div class="skill-group-title" style="font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Core Technical Stack</div>
+        <div class="skills-grid" style="grid-template-columns:1fr;">
+          <div class="skill-group">
+            <div class="skill-group-title">AI / ML</div>
+            <div class="skill-pills">
+              <span class="skill-pill">PyTorch</span><span class="skill-pill">TensorFlow</span>
+              <span class="skill-pill">HuggingFace</span><span class="skill-pill">LangChain</span>
+              <span class="skill-pill">LLaMA</span><span class="skill-pill">GPT</span>
+              <span class="skill-pill">Scikit-learn</span><span class="skill-pill">MONAI</span>
+            </div>
+          </div>
+          <div class="skill-group" style="margin-top:0.75rem;">
+            <div class="skill-group-title">Cloud &amp; MLOps</div>
+            <div class="skill-pills">
+              <span class="skill-pill">AWS</span><span class="skill-pill">GCP</span>
+              <span class="skill-pill">Kubernetes</span><span class="skill-pill">Docker</span>
+              <span class="skill-pill">MLflow</span><span class="skill-pill">CI/CD</span>
+            </div>
+          </div>
+          <div class="skill-group" style="margin-top:0.75rem;">
+            <div class="skill-group-title">Languages</div>
+            <div class="skill-pills">
+              <span class="skill-pill">Python</span><span class="skill-pill">SQL</span>
+              <span class="skill-pill">R</span><span class="skill-pill">C++</span>
+              <span class="skill-pill">MATLAB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--card-bg)">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Experience</h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Dec 2025 – Present</div>
+        <div class="exp-loc">MP, India</div>
+      </div>
+      <div>
+        <div class="exp-role">Data Scientist</div>
+        <div class="exp-company">Yash Technologies</div>
+        <ul class="exp-bullets">
+          <li>Architecting tool-using AI agents with orchestrated multi-step workflows incorporating RAG, function calling, planning/execution loops, and memory management.</li>
+          <li>Integrating agents with enterprise data sources via secure, auditable APIs enforcing least-privilege access and policy-aligned data handling.</li>
+          <li>Deploying AI services to OpenShift (Kubernetes) with production-ready health checks, secrets management, and CI/CD pipelines.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Feb 2022 – Oct 2025</div>
+        <div class="exp-loc">Remote, USA</div>
+      </div>
+      <div>
+        <div class="exp-role">AI Engineer</div>
+        <div class="exp-company">Neocortex Robotics</div>
+        <ul class="exp-bullets">
+          <li>Led development of multimodal RAG systems using CLIP, PGVector, and GPT enabling autonomous product recognition and robotic decision-making.</li>
+          <li>Architected large-scale computer vision pipelines (Detectron2, DeepLabV3, YOLO, Mask-RCNN) powering industrial pallet inspection across multiple customer sites.</li>
+          <li>Owned production ML deployments on AWS with REST APIs and CI/CD, ensuring low-latency, fault-tolerant robotic vision inference.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Mar 2023 – Jul 2025</div>
+        <div class="exp-loc">Remote, USA</div>
+      </div>
+      <div>
+        <div class="exp-role">AI Manager</div>
+        <div class="exp-company">Dept. of Surgery, University of Minnesota</div>
+        <ul class="exp-bullets">
+          <li>Developed clinical NLP systems using LLMs and prompt engineering to automate information extraction across diverse patient cohorts.</li>
+          <li>Engineered a multimodal deep learning model for rib fracture detection combining DenseNet-121 imaging features with structured EHR data via late-fusion architecture.</li>
+          <li>Directed clinicians, data engineers, and researchers to deploy reproducible pipelines contributing to peer-reviewed publications and clinical decision-support research.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jan 2020 – Apr 2022</div>
+        <div class="exp-loc">Knoxville, TN, USA</div>
+      </div>
+      <div>
+        <div class="exp-role">ML Research Engineer</div>
+        <div class="exp-company">TechMah Medical</div>
+        <ul class="exp-bullets">
+          <li>Developed deep learning models for medical image analysis and 3D bone reconstruction deployed at the University of Tennessee hospital systems.</li>
+          <li>Deployed explainable computer vision models for 3D bone reconstruction within FDA-regulated hospital environments.</li>
+          <li>Converted proof-of-concept models into deployable tools using high-dimensional medical imaging data in GxP-compliant settings.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Publications</h2>
+  </div>
+
+  <div class="pub-card">
+    <div class="pub-badge">Journal Article · 2025</div>
+    <div class="pub-title">A comparative analysis of large language models versus traditional information extraction methods for real-world evidence of patient symptomatology in acute and post-acute sequelae of SARS-CoV-2</div>
+    <div class="pub-authors"><strong>Thakkar, V.</strong>, Silverman, G. M., Kc, A., Ingraham, N. E., Jones, E. K., King, S., Melton, G. B., Zhang, R., &amp; Tignanelli, C. J.</div>
+    <div class="pub-venue">PLOS ONE, 20(5), e0323535</div>
+    <div class="pub-doi">
+      DOI: <a href="https://doi.org/10.1371/journal.pone.0323535" target="_blank">10.1371/journal.pone.0323535</a>
+      &nbsp;·&nbsp; <a href="https://doi.org/10.1371/journal.pone.0323535" target="_blank">Read Paper →</a>
+    </div>
+  </div>
+
+  <div class="pub-card" style="opacity:0.7;">
+    <div class="pub-badge" style="background:var(--ink-faint)">Conference Presentation · 2025</div>
+    <div class="pub-title">Presented at AIME 2025 — Artificial Intelligence in Medicine</div>
+    <div class="pub-authors">Salt Lake City, Utah, USA</div>
+    <div class="pub-venue">International Conference on Artificial Intelligence in Medicine</div>
+    <div class="pub-doi" style="color:var(--ink-faint);">Oral presentation of PLOS ONE publication findings</div>
+  </div>
+
+  <p style="font-size:0.82rem;color:var(--ink-faint);margin-top:1rem;">
+    Manuscript reviewer for international AI/ML conferences and peer-reviewed journals.
+  </p>
+</section>
+
+<!-- RESEARCH PORTFOLIO -->
+<section id="research">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Research Portfolio</h2>
+  </div>
+
+  <div class="research-grid">
+
+    <!-- CARD 1 -->
+    <div class="research-card" onclick="openLightbox('visual_abstract_3D_reconstruction.png')">
+      <img src="visual_abstract_3D_reconstruction.png" alt="Research 1">
+      <div class="research-body">
+        <div class="research-title">2D-3D Reconstruction</div>
+        <div class="research-tagline">Reconstructing 3D Knee Joint from 2D X-ray Images</div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="research-card" onclick="openLightbox('visual_abstract_3D_reconstruction_proposal.png')">
+      <img src="visual_abstract_3D_reconstruction_proposal.png" alt="Research 2">
+      <div class="research-body">
+        <div class="research-title">2D-3D Reconstruction Proposal</div>
+        <div class="research-tagline">Proposed Replacing SSM with Variational Autoencoders</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--card-bg)">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Research &amp; Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-tag">Clinical NLP · University of Minnesota</div>
+      <div class="project-title">LLM-Based Multi-Stage Clinical NLP System for Symptom Detection &amp; Severity Assessment</div>
+      <div class="project-desc">Two-stage pipeline combining fine-tuned LLaMA-3.2/3.3 models for symptom classification (present/absent/negated) across 13 symptoms, with structured LLM prompting for severity scoring. Validated on &gt;1,400 annotated clinical notes across five corpora.</div>
+      <div class="project-metrics">
+        <span class="metric">F1 = 0.98 (Seizures)</span>
+        <span class="metric">F1 = 0.99 (Self-harm)</span>
+        <span class="metric">LLaMA-70B</span>
+        <span class="metric">PLOS ONE</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Medical Imaging · University of Minnesota</div>
+      <div class="project-title">Multimodal Deep Learning Diagnostic Model for Adult Rib Fractures</div>
+      <div class="project-desc">Late-fusion architecture combining DenseNet-121 chest radiograph features with structured EHR variables. Trained on 21,658 encounters from 35 U.S. hospitals across four major health systems. Strong internal and external generalization with demographic fairness validation.</div>
+      <div class="project-metrics">
+        <span class="metric">AUC 0.90 (Internal)</span>
+        <span class="metric">21K+ Encounters</span>
+        <span class="metric">4 Health Systems</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Agentic AI · Neocortex Robotics</div>
+      <div class="project-title">Agentic Multimodal RAG for Image-Based Product Reasoning</div>
+      <div class="project-desc">Visual RAG system using LangChain and a custom CLIP-based embedding pipeline stored in PostgreSQL + PGVector. Autonomous GPT agent orchestrates perception, retrieval, and multi-step reasoning for accurate SKU classification from packaging images.</div>
+      <div class="project-metrics">
+        <span class="metric">CLIP Embeddings</span>
+        <span class="metric">PGVector</span>
+        <span class="metric">LangChain</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Computer Vision · Neocortex Robotics</div>
+      <div class="project-title">Deep Learning Models for Robotic Vision Guidance</div>
+      <div class="project-desc">Fine-tuned Mask-RCNN, DeepLab, PointRend, and YOLO for instance segmentation on 6K manually annotated RGB and Depth images. Deployed at major fulfillment centers including PetSmart via AWS S3 and Flask API for real-time robotic pick-and-place.</div>
+      <div class="project-metrics">
+        <span class="metric">YOLO · Mask-RCNN</span>
+        <span class="metric">AWS S3</span>
+        <span class="metric">Production</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Medical Imaging · TechMah Medical</div>
+      <div class="project-title">3D Bone Reconstruction &amp; Pose Regression</div>
+      <div class="project-desc">Fine-tuned U-Net variant for knee joint segmentation on ~250 radiographs. Developed a 5-layer custom CNN for 3D pose regression trained on 316K 2D projections using 4× NVIDIA V100 GPUs on GCP. Deployed at University of Tennessee hospital systems.</div>
+      <div class="project-metrics">
+        <span class="metric">316K Projections</span>
+        <span class="metric">GCP · 4× V100</span>
+        <span class="metric">FDA-Regulated</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STORIES -->
+<section id="stories">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2>Stories &amp; Moments</h2>
+  </div>
+  <p style="font-size:1rem;color:var(--ink-light);margin-bottom:2.5rem;max-width:560px;line-height:1.8;">
+    Behind every project is a journey. Here are a few moments that shaped who I am as a researcher and engineer.
+  </p>
+  <div class="stories-grid">
+
+    <div class="story-card">
+      <div class="story-img">
+        <div class="story-photo-label">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a4 4 0 018 0v2"/><circle cx="12" cy="13" r="2"/></svg>
+          <span>Photo</span>
+        </div>
+      </div>
+      <div class="story-body">
+        <div class="story-location">📍 Nashville, TN — Vanderbilt University</div>
+        <div class="story-headline">Standing at the School of Engineering</div>
+        <div class="story-excerpt">The building that launched everything. Vanderbilt's School of Engineering is where I earned my MS, taught courses, and first discovered my passion for AI.</div>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-img alt">
+        <div class="story-photo-label">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <span>Video</span>
+        </div>
+      </div>
+      <div class="story-body">
+        <div class="story-location">📍 Salt Lake City, UT — AIME 2025</div>
+        <div class="story-headline">Presenting at AIME 2025</div>
+        <div class="story-excerpt">Presenting our PLOS ONE paper at the Artificial Intelligence in Medicine conference — sharing findings on how LLMs compare to traditional NLP methods for real-world clinical evidence extraction.</div>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-img alt2">
+        <div class="story-photo-label">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a4 4 0 018 0v2"/><circle cx="12" cy="13" r="2"/></svg>
+          <span>Photo</span>
+        </div>
+      </div>
+      <div class="story-body">
+        <div class="story-location">📍 Minneapolis, MN — University of Minnesota</div>
+        <div class="story-headline">Clinical AI in the Real World</div>
+        <div class="story-excerpt">Working alongside surgeons and clinicians at one of the country's top medical research institutions. Building AI that doesn't just perform well in notebooks — but helps real patients.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching" style="background:var(--card-bg)">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2>Teaching</h2>
+  </div>
+  <p style="font-size:1rem;color:var(--ink-light);margin-bottom:2.5rem;max-width:520px;line-height:1.8;">
+    During my graduate studies at Vanderbilt University, I served as a Teaching Assistant for two core engineering courses.
+  </p>
+  <div class="teaching-grid">
+    <div class="teaching-card">
+      <div class="course-code">Graduate Teaching · Vanderbilt University</div>
+      <div class="course-title">Image Processing</div>
+      <div class="course-inst">Department of Electrical Engineering &amp; Computer Science · Nashville, TN</div>
+      <div class="course-desc">
+        Covered foundational and advanced topics in digital image processing including spatial filtering,
+        frequency-domain analysis, edge detection, morphological operations, and image segmentation.
+        Assisted with course instruction, lab sessions, grading, and student mentorship.
+      </div>
+    </div>
+    <div class="teaching-card">
+      <div class="course-code">Graduate Teaching · Vanderbilt University</div>
+      <div class="course-title">Database Management Systems</div>
+      <div class="course-inst">Department of Electrical Engineering &amp; Computer Science · Nashville, TN</div>
+      <div class="course-desc">
+        Covered relational database design, SQL, normalization, transaction management, indexing,
+        and query optimization. Supported lectures and grading while mentoring students through
+        hands-on database design projects.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <h2>Get in Touch</h2>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">
+        I'm always open to discussing research collaborations, speaking opportunities,
+        consulting on healthcare AI systems, or just exchanging ideas at the frontier of
+        applied machine learning. Don't hesitate to reach out.
+      </p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:vthakkarumn@gmail.com">vthakkarumn@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-val"><a href="https://www.linkedin.com/in/vedanshthakkar7781" target="_blank">linkedin.com/in/vedanshthakkar7781</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Website</div>
+            <div class="contact-val"><a href="https://vedanshthakkar.com" target="_blank">vedanshthakkar.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-val" style="color:rgba(248,245,240,0.7)">Madhya Pradesh, India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="Hi there!" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="This form does not work!" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input class="form-input" type="text" placeholder="Please feel free to send me an email (on your left)" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Apologies for any inconveniences…"></textarea>
+        </div>
+        <button class="btn-send" onclick="alert('Thank you! Please email vedanshcareers@gmail.com directly — form is not functional.')">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Vedansh Thakkar</span>
+  <span class="footer-note">AI Engineer &amp; Researcher · Built with purpose.</span>
+</footer>
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Expanded Research">
+</div>
+<script>
+function openLightbox(src) {
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+</body>
+</html>
